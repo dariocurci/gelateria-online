@@ -19,5 +19,8 @@ public class MenuItem {
   public double getPrice() {
     return this.price;
   }
-
+  
+  public items getItems() {
+    return this.itemType;
+  }
 }
