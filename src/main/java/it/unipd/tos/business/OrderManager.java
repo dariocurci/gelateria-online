@@ -40,7 +40,7 @@ public class OrderManager implements TakeAwayBill {
     
     if(numberOfGelati>5) total=total-(lowestPriceGelati/2);
     if((totalPriceGelati+totalPriceBudini)>50) total=total-((total/100)*10);
-    
+    if(total<10.0) total=total+0.50;
     return total;
 
     }

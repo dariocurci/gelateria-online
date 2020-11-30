@@ -95,7 +95,26 @@ public class OrderManagerTest{
         for(int i = 1; i <= 40; i++) menuitem.add(new MenuItem(MenuItem.items.gelati,"coppa nafta",5.00));
 
         order.getOrderPrice(menuitem, user);
-    } 
+    }
+    
+    @Test
+	public void addACommissionIfTheTotalIsLessThan10Euro_Test() {
+	  User user= new User("unknown","unknown","unknown","unknown",0);
+	  OrderManager order= new OrderManager();
+	  List<MenuItem> menuitem= new ArrayList <MenuItem>();
+	  menuitem.add(new MenuItem(MenuItem.items.gelati,"coppa nafta",1.00));
+	  menuitem.add(new MenuItem(MenuItem.items.budini,"coppa pinguino",1.00));
+	  menuitem.add(new MenuItem(MenuItem.items.bevande,"coca cola",1.00));
+	  menuitem.add(new MenuItem(MenuItem.items.gelati,"coppa nafta",3.00));
+	  menuitem.add(new MenuItem(MenuItem.items.gelati,"coppa nafta",2.00));
+	  
+	  try{
+          assertEquals(8.50,order.getOrderPrice(menuitem, user),0.0);
+		}
+		catch(TakeAwayBillException exc){
+			exc.getMessage();
+		}
+	}
 	
 
 }
