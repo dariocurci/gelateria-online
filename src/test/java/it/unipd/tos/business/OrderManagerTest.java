@@ -3,7 +3,8 @@ package it.unipd.tos.business;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import it.unipd.tos.business.OrderManager;
 import it.unipd.tos.business.exception.TakeAwayBillException;
 import it.unipd.tos.model.MenuItem;
@@ -78,6 +79,23 @@ public class OrderManagerTest{
 			exc.getMessage();
 		}
 	}
+	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void NumberElementsExceed30_Test() throws TakeAwayBillException {
+    	User user= new User("unknown","unknown","unknown","unknown",0);
+  	    OrderManager order= new OrderManager();
+  	    List<MenuItem> menuitem= new ArrayList <MenuItem>();
+
+        thrown.expect(TakeAwayBillException.class);
+        thrown.expectMessage("Attenzione! L'ordine non può superare i 30 elementi");
+
+        for(int i = 1; i <= 40; i++) menuitem.add(new MenuItem(MenuItem.items.gelati,"coppa nafta",5.00));
+
+        order.getOrderPrice(menuitem, user);
+    } 
 	
 
 }

@@ -18,6 +18,10 @@ public class OrderManager implements TakeAwayBill {
     int numberOfGelati=0;
     double lowestPriceGelati=0;
     
+    if(itemsOrdered.size() > 30){
+        throw new TakeAwayBillException("Attenzione! L'ordine non può superare i 30 elementi");
+    }
+    
     for (MenuItem m: itemsOrdered) {
     
       if(m.getItems()==MenuItem.items.gelati) {
