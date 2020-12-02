@@ -18,6 +18,11 @@ public class User {
     this.address=a;
     this.age=ag;
   }
+  public int getAge() {
+    return this.age;
+  }
 
-
+  public String getUsername() {
+    return this.username;
+  }
 }
