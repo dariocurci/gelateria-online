@@ -8,7 +8,8 @@ public class Time {
   private int ora;
 
   public Time(int o) {
-    this.ora=o;
+    if(o>=23||o<0) this.ora=0;
+    else this.ora=o;
   }
   
   public int getOra() {
