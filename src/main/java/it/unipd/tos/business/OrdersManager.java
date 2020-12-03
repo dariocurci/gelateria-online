@@ -29,7 +29,7 @@ public class OrdersManager {
       }
     }
   
-    Collections.shuffle(uniqueUnderageUsers);
+    if(!uniqueUnderageUsers.isEmpty())Collections.shuffle(uniqueUnderageUsers);
   
     for (int i=0;i < uniqueUnderageUsers.size() && i<10;i++) {
       usersWithFreeBill.add(uniqueUnderageUsers.get(i));
@@ -49,6 +49,7 @@ public class OrdersManager {
       if(match==false) {
         try{
           total.add(m.getOrderPrice(m.getMenu(), m.getUser()));
+          
         }
         catch(TakeAwayBillException exc){
           exc.getMessage();
