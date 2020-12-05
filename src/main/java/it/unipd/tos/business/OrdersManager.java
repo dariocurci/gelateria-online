@@ -47,13 +47,7 @@ public class OrdersManager {
       } 
 
       if(match==false) {
-        try{
-          total.add(m.getOrderPrice(m.getMenu(), m.getUser()));
-          
-        }
-        catch(TakeAwayBillException exc){
-          exc.getMessage();
-        } 
+          total.add(m.getOrderPrice(m.getMenu(), m.getUser())); 
      }
    } 
     return total;
